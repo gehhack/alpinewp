@@ -3,6 +3,16 @@
 #Copy motd
 cp -f ./motd /etc/motd
 
+#Database
+apk add mariadb mariadb-client
+/etc/init.d/mariadb setup
+sleep 5
+rc-update add mariadb
+sleep 2
+/etc/init.d/mariadb start
+sleep 5
+
+
 #Configure SSHD
 setup-sshd
 rc-update add sshd
@@ -19,7 +29,7 @@ apk add apache2
 apk add php7
 apk add php7 php7-common php7-fpm php7-cgi php7-apache2 php7-curl php7-gd php7-mbstring php7-mcrypt php7-pdo php7-mcrypt php7-mysqli php7-mysql
 apk add git
-sleep -2
+sleep 2
 
 #Git Wordpress
 git clone https://github.com/WordPress/WordPress.git /var/www/localhost/htdocs/
@@ -29,14 +39,6 @@ rc-update add apache2
 /etc/init.d/apache2 start
 rm -f /var/www/localhost/htdocs/index.html
 
-#Database
-apk add mariadb mariadb-client
-/etc/init.d/mariadb setup
-sleep 5
-rc-update add mariadb
-sleep 2
-/etc/init.d/mariadb start
-sleep 5
 
 #Configuration database
 USER=`pwgen -A 8 1`
