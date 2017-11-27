@@ -15,11 +15,12 @@ WEBMIN_PASSWORD=webmin
 set -e
 
 sudo apk add curl perl
-wget https://prdownloads.sourceforge.net/webadmin/webmin-1.860.tar.gz
-tar zxf webmin-1.860.tar.gz
-tar zxf webmin-1.860.tar.gz -C /var/lib/
-mv /var/lib/webmin-1.860 /var/lib/webmin
-rm -rf webmin-1.860.tar.gz
+#wget https://prdownloads.sourceforge.net/webadmin/webmin-1.860.tar.gz
+
+tar zxf webmin-1.860-minimal.tar.gz
+tar zxf webmin-1.860-minimal.tar.gz -C /var/lib/
+mv /var/lib/webmin-1.860-minimal /var/lib/webmin
+rm -rf webmin-1.860-minimal.tar.gz
 cd /var/lib/webmin
 mkdir -p /etc/rc.d/init.d/
 cat <<EOF | sudo ./setup.sh
