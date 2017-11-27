@@ -1,5 +1,9 @@
 #!/bin/ash
 
+#Clean and update apk
+rm -rf /var/cache/apk/* && rm -rf /tmp/*
+apk update
+
 #Copy motd
 cp -f ./motd /etc/motd
 
@@ -19,11 +23,11 @@ rc-update add sshd
 /etc/init.d/sshd start
 
 #Repositories
-wget -O /etc/apk/keys/php-alpine.rsa.pub http://php.codecasts.rocks/php-alpine.rsa.pub
-echo "@php http://php.codecasts.rocks/v3.6/php-7.1" >> /etc/apk/repositories
+#wget -O /etc/apk/keys/php-alpine.rsa.pub http://php.codecasts.rocks/php-alpine.rsa.pub
+#echo "@php http://php.codecasts.rocks/v3.6/php-7.1" >> /etc/apk/repositories
 
 #Install packages
-apk add --update php7-redis@php
+#apk add --update php7-redis@php
 apk add pwgen
 apk add apache2
 apk add php7
@@ -31,27 +35,27 @@ apk add php7
 apk add php7-common 
 apk add php7-fpm 
 apk add php7-cgi 
-apk add hp7-apache2 
+apk add php7-apache2 
 apk add php7-curl 
 apk add php7-gd 
-apk add php7-mbstring 
+#apk add php7-mbstring 
 apk add php7-mcrypt 
 apk add php7-pdo 
 apk add php7-mcrypt 
 apk add php7-mysqli 
-apk add php7-mysql
+#apk add php7-mysql
 apk add git
 sleep 2
 
 #Git Wordpress
+rm -f /var/www/localhost/htdocs/index.html
 git clone https://github.com/WordPress/WordPress.git /var/www/localhost/htdocs/
 
 #Apache2 start & boot
 rc-update add apache2
 /etc/init.d/apache2 start
 sleep 2
-rm -f /var/www/localhost/htdocs/index.html
-sleep 2
+
 
 #Configuration database
 USER=`pwgen -A 8 1`
@@ -60,7 +64,7 @@ ROOTPASS=`pwgen -s 32 1`
 DIR='/var/www/localhost/htdocs'
 
 mysqladmin -u root password $ROOTPASS
-mysqladmin -u root -h $HOSTNAME password $ROOTPASS
+#mysqladmin -u root -h $HOSTNAME password $ROOTPASS
 
 mysql -uroot -p${ROOTPASS} <<MYSQL_SCRIPT
 CREATE DATABASE $USER;
@@ -87,5 +91,8 @@ echo "User" >> "/root/access.txt"
 echo "rootPWD :   $ROOTPASS" >> "/root/access.txt"
 echo "User DB :   $USER" >> "/root/access.txt"
 echo "Password:   $PASS" >> "/root/access.txt"
+
+#Refresh Apache2
+/etc/init.d/apache2 reload
 
 exit
