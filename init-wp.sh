@@ -27,7 +27,19 @@ apk add --update php7-redis@php
 apk add pwgen
 apk add apache2
 apk add php7
-apk add php7 php7-common php7-fpm php7-cgi php7-apache2 php7-curl php7-gd php7-mbstring php7-mcrypt php7-pdo php7-mcrypt php7-mysqli php7-mysql
+apk add php7 
+apk add php7-common 
+apk add php7-fpm 
+apk add php7-cgi 
+apk add hp7-apache2 
+apk add php7-curl 
+apk add php7-gd 
+apk add php7-mbstring 
+apk add php7-mcrypt 
+apk add php7-pdo 
+apk add php7-mcrypt 
+apk add php7-mysqli 
+apk add php7-mysql
 apk add git
 sleep 2
 
