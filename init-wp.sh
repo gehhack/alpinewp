@@ -95,9 +95,9 @@ rc-status
 #Infos MDP et USER
 echo "Informations in /root/access.txt"
 echo "User" >> "/root/access.txt"
-echo "rootPWD :   $ROOTPASS" >> "/root/access.txt"
-echo "User DB :   $USER" >> "/root/access.txt"
-echo "Password:   $PASS" >> "/root/access.txt"
+echo "rootPWD    :   $ROOTPASS" >> "/root/access.txt"
+echo "UserDB     :   $USER" >> "/root/access.txt"
+echo "PasswordDB :   $PASS" >> "/root/access.txt"
 
 #Refresh Apache2
 /etc/init.d/apache2 reload
