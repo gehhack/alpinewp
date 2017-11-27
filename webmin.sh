@@ -14,7 +14,8 @@ WEBMIN_PASSWORD=webmin
 
 set -e
 
-apk add curl perl
+apk add curl 
+apk add perl
 #wget https://prdownloads.sourceforge.net/webadmin/webmin-1.860.tar.gz
 
 tar zxf webmin-1.860-minimal.tar.gz
