@@ -1,5 +1,9 @@
 #!/bin/ash
 
+#Copy motd
+
+cp -f ./motd /etc/motd
+
 #Configure SSHD
 setup-sshd
 rc-update add sshd
