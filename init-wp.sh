@@ -39,8 +39,8 @@ PASS=`pwgen -s 32 1`
 ROOTPASS=`pwgen -s 32 1`
 DIR='/var/www/localhost/htdocs'
 
-'/usr/bin/mysqladmin' -u root password $ROOTPASS
-'/usr/bin/mysqladmin' -u root -h $HOSTNAME password $ROOTPASS
+mysqladmin -u root password $ROOTPASS
+mysqladmin -u root -h $HOSTNAME password $ROOTPASS
 
 mysql -uroot -p${ROOTPASS} <<MYSQL_SCRIPT
 CREATE DATABASE $USER;
