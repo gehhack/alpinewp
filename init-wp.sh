@@ -62,8 +62,10 @@ sed -i "/DB_PASSWORD/s/'[^']*'/'${PASS}'/2" $DIR/wp-config.php
 rc-status
 
 #Infos MDP et USER
+echo "Informations in /root/access.txt"
+echo "User" >> "/root/access.txt"
+echo "rootPWD :   $ROOTPASS" >> "/root/access.txt"
+echo "User DB :   $USER" >> "/root/access.txt"
+echo "Password:   $PASS" >> "/root/access.txt"
 
-echo "User"
-echo "rootPWD :   $ROOTPASS"
-echo "User DB :   $USER"
-echo "Password:   $PASS"
+exit
