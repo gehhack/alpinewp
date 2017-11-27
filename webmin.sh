@@ -1,6 +1,9 @@
 #!/bin/ash
 
+apk updatae
 apk add pwgen
+apk add sudo
+apk add tar
 
 WEBMIN_USERNAME=`pwgen -A 8 1`
 WEBMIN_PASSWORD=`pwgen -s 32 1`
@@ -12,14 +15,13 @@ WEBMIN_PASSWORD=webmin
 set -e
 
 sudo apk add curl perl
-curl -sL http://prdownloads.sourceforge.net/webadmin/webmin-1.860.tar.gz \
-     -o webmin-1.860.tar.gz
+wget https://prdownloads.sourceforge.net/webadmin/webmin-1.860.tar.gz
 tar zxf webmin-1.860.tar.gz
-sudo tar zxf webmin-1.860.tar.gz -C /var/lib/
-sudo mv /var/lib/webmin-1.860 /var/lib/webmin
+tar zxf webmin-1.860.tar.gz -C /var/lib/
+mv /var/lib/webmin-1.860 /var/lib/webmin
 rm -rf webmin-1.860.tar.gz
 cd /var/lib/webmin
-sudo mkdir -p /etc/rc.d/init.d/
+mkdir -p /etc/rc.d/init.d/
 cat <<EOF | sudo ./setup.sh
 /etc/webmin
 /var/log/webmin
