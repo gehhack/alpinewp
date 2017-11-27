@@ -40,3 +40,9 @@ sudo chmod a+x /etc/init.d/webmin
 
 sudo rc-update add webmin
 sudo rc-service webmin start
+
+echo "Informations in /root/access.txt"
+echo "User" >> "/root/access.txt"
+echo "Port Webmin : $WEBMIN_PORT" >> "/root/access.txt"
+echo "User Webmin : $WEBMIN_USERNAME" >> "/root/access.txt"
+echo "MDP Webmin :$WEBMIN_PASSWORD" >> "/root/access.txt"
