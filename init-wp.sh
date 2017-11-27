@@ -12,6 +12,7 @@ setup-acf
 rm -f /etc/mini_httpd/mini_httpd.conf
 cp mini_httpd.conf /etc/mini_httpd/mini_httpd.conf
 mv /var/www/localhost/htdocs /var/www/localhost/acf
+/etc/init.d/mini_httpd restart
 
 #Database
 apk add mariadb mariadb-client
