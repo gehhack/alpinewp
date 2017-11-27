@@ -31,6 +31,7 @@ rc-update add apache2
 rm -f /var/www/localhost/htdocs/index.html
 
 #Database
+/etc/init.d/mariadb setup
 rc-update add mariadb
 /etc/init.d/mariadb start
 
