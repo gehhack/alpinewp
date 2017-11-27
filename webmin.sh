@@ -36,21 +36,21 @@ ${WEBMIN_PASSWORD}
 ${WEBMIN_PASSWORD}
 y
 EOF
-#cat <<EOF | tee /etc/init.d/webmin
-##!/sbin/openrc-run
-#WEBMIN=/etc/rc.d/init.d/webmin
-#start() { \${WEBMIN} start; }
-#stop() { \${WEBMIN} start; }
-#EOF
-#chmod a+x /etc/init.d/webmin
+cat <<EOF | tee /etc/init.d/webmin
+#!/sbin/openrc-run
+WEBMIN=/etc/rc.d/init.d/webmin
+start() { \${WEBMIN} start; }
+stop() { \${WEBMIN} start; }
+EOF
+chmod a+x /etc/init.d/webmin
 
 rc-update add webmin
 rc-service webmin start
 
-echo "Informations in /root/access.txt"
-echo "User" >> "/root/access.txt"
-echo "Port Webmin : $WEBMIN_PORT" >> "/root/access.txt"
-echo "User Webmin : $WEBMIN_USERNAME" >> "/root/access.txt"
-echo "MDP Webmin :$WEBMIN_PASSWORD" >> "/root/access.txt"
+echo "Informations in /root/webmin.txt"
+echo "User" >> "/root/webmin.txt"
+echo "Port Webmin : $WEBMIN_PORT" >> "/root/webmin.txt"
+echo "User Webmin : $WEBMIN_USERNAME" >> "/root/webmin.txt"
+echo "MDP Webmin :$WEBMIN_PASSWORD" >> "/root/webmin.txt"
 
 exit
