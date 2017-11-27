@@ -35,13 +35,13 @@ ${WEBMIN_PASSWORD}
 ${WEBMIN_PASSWORD}
 y
 EOF
-cat <<EOF | tee /etc/init.d/webmin
-#!/sbin/openrc-run
-WEBMIN=/etc/rc.d/init.d/webmin
-start() { \${WEBMIN} start; }
-stop() { \${WEBMIN} start; }
-EOF
-chmod a+x /etc/init.d/webmin
+#cat <<EOF | tee /etc/init.d/webmin
+##!/sbin/openrc-run
+#WEBMIN=/etc/rc.d/init.d/webmin
+#start() { \${WEBMIN} start; }
+#stop() { \${WEBMIN} start; }
+#EOF
+#chmod a+x /etc/init.d/webmin
 
 rc-update add webmin
 rc-service webmin start
