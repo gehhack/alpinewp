@@ -17,7 +17,7 @@ echo "@php http://php.codecasts.rocks/v3.6/php-7.1" >> /etc/apk/repositories
 apk add --update php7-redis@php
 apk add pwgen
 apk add apache2
-Apk add php7
+apk add php7
 apk add php7 php7-common php7-fpm php7-cgi php7-apache2 php7-curl php7-gd php7-mbstring php7-mcrypt php7-pdo php7-mcrypt php7-mysqli php7-mysql
 apk add mysql mysql-client
 apk add git
