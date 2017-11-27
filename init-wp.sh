@@ -10,11 +10,11 @@ cp -f ./motd /etc/motd
 #Database
 apk add mariadb mariadb-client
 /etc/init.d/mariadb setup
-sleep 5
+sleep 1
 rc-update add mariadb
-sleep 2
+sleep 1
 /etc/init.d/mariadb start
-sleep 5
+sleep 1
 
 
 #Configure SSHD
