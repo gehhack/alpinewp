@@ -7,6 +7,12 @@ apk update
 #Copy motd
 cp -f ./motd /etc/motd
 
+#ACF
+setup-acf
+rm -f /etc/mini_httpd/mini_httpd.conf
+cp mini_httpd.conf /etc/mini_httpd/mini_httpd.conf
+mv /var/www/localhost/htdocs /var/www/localhost/acf
+
 #Database
 apk add mariadb mariadb-client
 /etc/init.d/mariadb setup
