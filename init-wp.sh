@@ -49,8 +49,9 @@ git clone https://github.com/WordPress/WordPress.git /var/www/localhost/htdocs/
 #Apache2 start & boot
 rc-update add apache2
 /etc/init.d/apache2 start
+sleep 2
 rm -f /var/www/localhost/htdocs/index.html
-
+sleep 2
 
 #Configuration database
 USER=`pwgen -A 8 1`
