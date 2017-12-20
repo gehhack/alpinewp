@@ -45,24 +45,33 @@ apk add php7-cgi
 apk add php7-apache2 
 apk add php7-curl 
 apk add php7-gd 
-#apk add php7-mbstring 
+apk add php7-mbstring 
 apk add php7-mcrypt 
 apk add php7-pdo 
 apk add php7-mcrypt 
 apk add php7-mysqli 
 #apk add php7-mysql
 apk add git
+apk add zlib-dev
+apk add zlib
+apk add php7-zlib
 sleep 2
 
 #Git Wordpress
 rm -f /var/www/localhost/htdocs/index.html
 git clone https://github.com/WordPress/WordPress.git /var/www/localhost/htdocs/
 
+#Git PhpMyadmin
+git clone https://github.com/phpmyadmin/phpmyadmin.git /var/www/localhost/htdocs/phpmyadmin
+
+#Chown & chmod www
+chown -R apache:apache /var/www/localhost/htdocs
+chmod -R 700 /var/www/localhost/htdocs/phpmyadmin/setup
+
 #Apache2 start & boot
 rc-update add apache2
 /etc/init.d/apache2 start
 sleep 2
-
 
 #Configuration database
 USER=`pwgen -A 8 1`
