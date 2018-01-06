@@ -3,6 +3,7 @@
 #Clean and update apk
 rm -rf /var/cache/apk/* && rm -rf /tmp/*
 apk update
+apk add alpine-sdk
 
 #Copy motd
 cp -f ./motd /etc/motd
