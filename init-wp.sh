@@ -56,6 +56,7 @@ apk add git
 apk add zlib-dev
 apk add zlib
 apk add php7-zlib
+apk add php7-session
 sleep 2
 
 #Git Wordpress
