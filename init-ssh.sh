@@ -4,6 +4,9 @@
 rm -rf /var/cache/apk/* && rm -rf /tmp/*
 apk update
 
+#Install SDK
+apk add alpine-sdk
+
 #Copy motd
 cp -f ./motd /etc/motd
 
