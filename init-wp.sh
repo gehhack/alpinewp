@@ -9,11 +9,11 @@ apk add alpine-sdk
 cp -f ./motd /etc/motd
 
 #ACF
-setup-acf
-rm -f /etc/mini_httpd/mini_httpd.conf
-cp mini_httpd.conf /etc/mini_httpd/mini_httpd.conf
-mv /var/www/localhost/htdocs /var/www/localhost/acf
-/etc/init.d/mini_httpd restart
+#setup-acf
+##rm -f /etc/mini_httpd/mini_httpd.conf
+#cp mini_httpd.conf /etc/mini_httpd/mini_httpd.conf
+#mv /var/www/localhost/htdocs /var/www/localhost/acf
+#/etc/init.d/mini_httpd restart
 
 #Database
 apk add mariadb mariadb-client
@@ -75,6 +75,11 @@ rc-update add apache2
 /etc/init.d/apache2 start
 sleep 2
 
+#Create user and add group sudoer
+USERSSH=`pwgen -A 8 1`
+USERSSHPASS=`pwgen -s 12 1`
+echo "$USERSSH ALL=(ALL) ALL"
+
 #Configuration database
 USER=`pwgen -A 8 1`
 PASS=`pwgen -s 32 1`
@@ -106,9 +111,11 @@ rc-status
 #Infos MDP et USER
 echo "Informations in /root/access.txt"
 echo "User" >> "/root/access.txt"
-echo "rootPWD    :   $ROOTPASS" >> "/root/access.txt"
+echo "rootDB    :   $ROOTPASS" >> "/root/access.txt"
 echo "UserDB     :   $USER" >> "/root/access.txt"
 echo "PasswordDB :   $PASS" >> "/root/access.txt"
+echo "UserSSH :   $PUSERSSH" >> "/root/access.txt"
+echo "UserSSHPass :   $USERSSHPASS" >> "/root/access.txt"
 
 #Refresh Apache2
 /etc/init.d/apache2 reload
